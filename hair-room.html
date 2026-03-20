@@ -9,104 +9,96 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;font-weight:300;background:#f8f6f3;color:#1a1a1a;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-thumb{background:#878787}
 
 /* HEADER */
-header{position:fixed;top:0;left:0;right:0;z-index:500;height:5rem;display:flex;align-items:center;padding:0 3rem;transition:background 0.4s,transform 0.5s}
+header{position:fixed;top:0;left:0;right:0;height:5rem;display:flex;align-items:center;padding:0 3rem;z-index:100;transition:background 0.4s,transform 0.4s}
 header.scrolled{background:rgba(248,246,243,0.96);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,0.06)}
 header.hide{transform:translateY(-100%)}
-.logo img{height:2rem;width:auto;display:block}
-.h-nav{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:3rem;list-style:none}
-.h-nav a{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;text-decoration:none;color:#1a1a1a;transition:opacity 0.2s}
-.h-nav a:hover{opacity:0.5}
-.book-btn{margin-left:auto;padding:0.75rem 1.6rem;background:#1a1a1a;color:#f8f6f3;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background 0.3s}
-.book-btn:hover{background:#444}
+.logo img{height:2rem}
+.hnav{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:3rem;list-style:none}
+.hnav a{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#1a1a1a;transition:opacity 0.2s}
+.hnav a:hover{opacity:0.5}
+.bookbtn{margin-left:auto;padding:0.75rem 1.6rem;background:#1a1a1a;color:#f8f6f3;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;transition:background 0.3s}
+.bookbtn:hover{background:#444}
 
 /* HERO */
-#hero{position:relative;height:100vh;min-height:680px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-#hero-bg{position:absolute;inset:0;width:100%;height:115%;object-fit:cover}
-.hero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.1) 40%,rgba(0,0,0,0.6))}
-.hero-text{position:relative;text-align:center}
-.hero-text h1{font-family:'Playfair Display',serif;font-size:clamp(4rem,11vw,10rem);color:#fff;font-weight:400;letter-spacing:-0.02em;line-height:0.92;display:block}
-.hero-text p{margin-top:2rem;font-size:0.9rem;color:rgba(255,255,255,0.55);letter-spacing:0.08em}
+#hero{position:relative;height:100vh;min-height:650px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;width:100%;height:115%;object-fit:cover}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.42),rgba(0,0,0,0.1) 40%,rgba(0,0,0,0.62))}
+.hero-ct{position:relative;text-align:center;padding:0 1rem}
+.hero-ct h1{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,11vw,10rem);color:#fff;font-weight:400;letter-spacing:-0.02em;line-height:0.92}
+.hero-ct p{margin-top:1.75rem;font-size:0.9rem;color:rgba(255,255,255,0.55);letter-spacing:0.08em}
 .scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.75rem}
 .scroll-hint span{font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
-.scroll-line{width:1px;height:3rem;background:rgba(255,255,255,0.2);overflow:hidden;position:relative}
-.scroll-line::after{content:'';position:absolute;top:0;left:0;width:100%;height:40%;background:rgba(255,255,255,0.7);animation:sa 2s ease-in-out infinite}
-@keyframes sa{0%,100%{transform:translateY(-100%)}50%{transform:translateY(250%)}}
+.sline{width:1px;height:3rem;background:rgba(255,255,255,0.2);overflow:hidden;position:relative}
+.sline::after{content:'';position:absolute;top:0;left:0;width:100%;height:35%;background:rgba(255,255,255,0.7);animation:sla 2s ease-in-out infinite}
+@keyframes sla{0%,100%{transform:translateY(-100%)}50%{transform:translateY(250%)}}
 
 /* MARQUEE */
-.mq{background:#1a1a1a;padding:1.5rem 0;overflow:hidden}
-.mq-inner{display:flex;white-space:nowrap;animation:mqa 30s linear infinite}
+.mq-wrap{background:#1a1a1a;padding:1.4rem 0;overflow:hidden}
+.mq-inner{display:flex;white-space:nowrap;animation:mqa 28s linear infinite}
 .mq-inner:hover{animation-play-state:paused}
 @keyframes mqa{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .mq-item{display:inline-flex;align-items:center;gap:1rem;margin:0 3rem;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:#f8f6f3}
 .mq-dot{width:4px;height:4px;border-radius:50%;background:#878787;flex-shrink:0}
 
-/* SECTIONS */
+/* SHARED */
 .sec{padding:7rem 3rem}
-.inner{max-width:88rem;margin:0 auto}
-.s-label{font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:#878787;display:block;margin-bottom:0.75rem}
+.wrap{max-width:88rem;margin:0 auto}
+.lbl{font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:#878787;display:block;margin-bottom:0.75rem}
 .serif{font-family:'Playfair Display',serif;font-weight:400;letter-spacing:-0.02em}
-.bar{width:5rem;height:1px;background:#878787;margin:2rem 0}
-
-/* REVEAL ANIMATIONS */
-.rv{opacity:0;transform:translateY(35px);transition:opacity 0.85s ease,transform 0.85s ease}
-.rv.on{opacity:1;transform:translateY(0)}
-.rv.d1{transition-delay:0.1s}
-.rv.d2{transition-delay:0.2s}
-.rv.d3{transition-delay:0.3s}
-.img-up{opacity:0;clip-path:inset(100% 0 0 0);transition:opacity 1.1s ease,clip-path 1.1s ease}
-.img-up.on{opacity:1;clip-path:inset(0 0 0 0)}
-.img-right{opacity:0;clip-path:inset(0 100% 0 0);transition:opacity 1.1s ease 0.15s,clip-path 1.1s ease 0.15s}
-.img-right.on{opacity:1;clip-path:inset(0 0 0 0)}
+.bar{width:5rem;height:1px;background:#878787;margin:1.75rem 0}
 
 /* STORY */
-.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-.story-img img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
-.story-text h2{font-size:clamp(2.5rem,4.5vw,5rem);line-height:0.95;margin-bottom:1.5rem}
+#story{background:#f8f6f3}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.story-img img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.story-text h2{font-size:clamp(2.5rem,4vw,5rem);line-height:0.95;margin-bottom:1.25rem}
 .story-text p{color:rgba(26,26,26,0.65);line-height:1.85;margin-bottom:1rem}
 .story-text p.lg{font-size:1.05rem;color:rgba(26,26,26,0.82)}
 
 /* SERVICES */
-.svc-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;flex-wrap:wrap;gap:1.5rem}
-.svc-top h2{font-size:clamp(2rem,4vw,4.5rem);line-height:0.95}
+#services{background:#f8f6f3;border-top:1px solid #e0dbd3}
+.sv-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;flex-wrap:wrap;gap:1.5rem}
+.sv-top h2{font-size:clamp(2rem,4vw,4.5rem);line-height:0.95}
 .outline-btn{padding:0.9rem 2rem;border:1px solid #1a1a1a;background:transparent;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;color:#1a1a1a;transition:all 0.3s}
 .outline-btn:hover{background:#1a1a1a;color:#f8f6f3}
-.svc-list{border-top:1px solid #e0dbd3}
-.svc-row{display:flex;align-items:center;justify-content:space-between;padding:1.75rem 0;border-bottom:1px solid #e0dbd3;transition:padding-left 0.3s}
-.svc-row:hover{padding-left:0.75rem}
-.svc-l{display:flex;align-items:center;gap:2rem}
-.svc-cat{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:#878787;width:5.5rem;flex-shrink:0}
-.svc-name{font-size:1.2rem;font-weight:300}
-.svc-desc{font-size:0.8rem;color:rgba(26,26,26,0.4)}
-.svc-price{font-family:'Playfair Display',serif;font-size:1.5rem;color:#878787;white-space:nowrap}
+.sv-list{border-top:1px solid #e0dbd3}
+.sv-row{display:flex;align-items:center;justify-content:space-between;padding:1.75rem 0;border-bottom:1px solid #e0dbd3;gap:2rem;transition:padding-left 0.3s}
+.sv-row:hover{padding-left:0.75rem}
+.sv-l{display:flex;align-items:center;gap:2rem}
+.sv-cat{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:#878787;width:5.5rem;flex-shrink:0}
+.sv-name{font-size:1.2rem;font-weight:300}
+.sv-desc{font-size:0.8rem;color:rgba(26,26,26,0.4)}
+.sv-price{font-family:'Playfair Display',serif;font-size:1.5rem;color:#878787;white-space:nowrap}
 
 /* PARTNERS */
-.pt-sec{background:#1a1a1a;color:#f8f6f3}
-.pt-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-.pt-text h2{font-size:clamp(2.5rem,4.5vw,5.5rem);line-height:0.92;color:#f8f6f3}
-.pt-text .s-label,.pt-text p{color:rgba(248,246,243,0.6)}
-.pt-text p.lg{font-size:1.05rem;color:rgba(248,246,243,0.85);margin-bottom:0.75rem}
+#partners{background:#1a1a1a;color:#f8f6f3}
+.pt-text h2{font-size:clamp(2.5rem,4.5vw,5.5rem);line-height:0.92;color:#f8f6f3;margin-bottom:1.25rem}
+.pt-text .lbl{color:#878787}
 .pt-text .bar{background:#878787}
+.pt-text p{color:rgba(248,246,243,0.6);line-height:1.85;margin-bottom:0.75rem}
+.pt-text p.lg{font-size:1.05rem;color:rgba(248,246,243,0.85)}
 .pt-brand{font-size:1.1rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(248,246,243,0.15);margin-top:2.5rem;display:block}
-.pt-img img{width:100%;display:block}
+.pt-img img{width:100%}
 
 /* GALLERY */
-#gal-section{background:#f8f6f3;height:250vh;position:relative}
+#gallery{background:#f8f6f3;height:250vh;position:relative}
 .gal-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:0 3rem}
-.gal-head{max-width:88rem;margin:0 auto 2.5rem;width:100%}
-.gal-row{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:0.5rem}
+.gal-head{max-width:88rem;margin:0 auto 2.5rem;width:100%;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .gal-head h2{font-size:clamp(2rem,4vw,4rem);line-height:0.95}
-.gal-head p{font-size:0.85rem;color:#6a6a6a;max-width:18rem}
+.gal-head p{font-size:0.85rem;color:#6a6a6a}
 .gal-track{display:flex;gap:1.5rem;will-change:transform}
-.g-item{flex-shrink:0;width:32vw;max-width:420px;position:relative;overflow:hidden;aspect-ratio:4/5}
-.g-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease}
-.g-item:hover img{transform:scale(1.04)}
-.g-cap{position:absolute;bottom:0;left:0;right:0;padding:1.25rem;background:linear-gradient(to top,rgba(0,0,0,0.5),transparent)}
-.g-cap span{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.75)}
-.g-num{position:absolute;top:1rem;right:1rem;font-family:'Playfair Display',serif;font-size:1.8rem;color:rgba(255,255,255,0.18)}
+.gi{flex-shrink:0;width:32vw;max-width:420px;position:relative;overflow:hidden;aspect-ratio:4/5}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+.gi:hover img{transform:scale(1.04)}
+.gi-cap{position:absolute;bottom:0;left:0;right:0;padding:1.25rem;background:linear-gradient(to top,rgba(0,0,0,0.5),transparent)}
+.gi-cap span{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.75)}
+.gi-num{position:absolute;top:1rem;right:1rem;font-family:'Playfair Display',serif;font-size:1.8rem;color:rgba(255,255,255,0.2)}
 .gal-prog{max-width:88rem;margin:2rem auto 0;width:100%;display:flex;align-items:center;gap:1rem}
 .gp-n{font-size:0.6rem;letter-spacing:0.3em;color:rgba(26,26,26,0.3)}
 .gp-bar{flex:1;height:1px;background:#e0dbd3;position:relative}
@@ -117,9 +109,9 @@ footer{background:#1a1a1a;color:#f8f6f3;padding:7rem 3rem 4rem}
 .ft{max-width:88rem;margin:0 auto}
 .ft-h2{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5.5vw,6.5rem);font-weight:400;letter-spacing:-0.02em;line-height:1.05;color:#f8f6f3;margin-bottom:2.5rem}
 .ft-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:5rem}
-.ft-btn{display:inline-flex;align-items:center;gap:0.75rem;padding:1rem 2rem;background:#f8f6f3;color:#1a1a1a;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:background 0.3s}
+.ft-btn{display:inline-flex;align-items:center;gap:0.75rem;padding:1rem 2rem;background:#f8f6f3;color:#1a1a1a;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;transition:background 0.3s}
 .ft-btn:hover{background:#878787;color:#fff}
-.ft-btn2{display:inline-flex;align-items:center;gap:0.75rem;padding:1rem 2rem;border:1px solid rgba(248,246,243,0.25);color:#f8f6f3;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:all 0.3s}
+.ft-btn2{display:inline-flex;align-items:center;gap:0.75rem;padding:1rem 2rem;border:1px solid rgba(248,246,243,0.25);color:#f8f6f3;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;transition:all 0.3s}
 .ft-btn2:hover{background:#f8f6f3;color:#1a1a1a}
 .ft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4rem;margin-bottom:4rem}
 .ft-lbl{display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(248,246,243,0.35)}
@@ -129,54 +121,54 @@ footer{background:#1a1a1a;color:#f8f6f3;padding:7rem 3rem 4rem}
 .ft-hr{display:flex;justify-content:space-between;font-size:0.8rem}
 .ft-hr span:last-child{color:rgba(248,246,243,0.35)}
 .ft-map{margin-bottom:4rem}
-.ft-map iframe{width:100%;height:260px;border:0;filter:grayscale(100%) contrast(1.1) brightness(0.75);display:block}
+.ft-map iframe{width:100%;height:260px;border:0;filter:grayscale(100%) contrast(1.1) brightness(0.75)}
 .ft-bot{border-top:1px solid rgba(248,246,243,0.08);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .ft-bot img{height:1rem;opacity:0.4}
 .ft-bot p{font-size:0.6rem;color:rgba(248,246,243,0.25)}
 .ft-soc{display:flex;gap:1.25rem}
-.ft-soc a{color:rgba(248,246,243,0.3);transition:color 0.3s;text-decoration:none}
+.ft-soc a{color:rgba(248,246,243,0.3);transition:color 0.3s}
 .ft-soc a:hover{color:#f8f6f3}
 .ft-soc svg{width:15px;height:15px;fill:currentColor;display:block}
 
 /* MODAL */
-#modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);z-index:800;opacity:0;pointer-events:none;transition:opacity 0.4s}
-#modal-bg.open{opacity:1;pointer-events:all}
-#modal{position:fixed;top:0;right:0;bottom:0;width:100%;max-width:40rem;background:#f8f6f3;z-index:900;overflow-y:auto;transform:translateX(100%);transition:transform 0.5s ease}
-#modal.open{transform:translateX(0)}
-.m-hdr{position:sticky;top:0;background:rgba(248,246,243,0.97);backdrop-filter:blur(10px);border-bottom:1px solid #e0dbd3;padding:2rem 2rem 0;z-index:10}
-.m-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.25rem}
-.m-top h2{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:400}
-.m-close{background:none;border:none;cursor:pointer;padding:0.5rem;transition:transform 0.3s}
-.m-close:hover{transform:rotate(90deg)}
-.m-tabs{display:flex;gap:0.25rem;padding-bottom:1rem;overflow-x:auto}
-.m-tab{padding:0.45rem 1rem;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(26,26,26,0.05);border:none;cursor:pointer;white-space:nowrap;transition:all 0.3s;color:rgba(26,26,26,0.5)}
-.m-tab.on{background:#878787;color:#fff}
-.m-body{padding:2rem}
-.m-cat{display:none}
-.m-cat.on{display:block}
-.m-ct{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:0.4rem}
-.m-line{height:1px;background:#878787;margin-bottom:1.75rem}
-.m-item{display:flex;align-items:baseline;gap:0.75rem;padding:1.1rem 0;border-bottom:1px solid rgba(26,26,26,0.07)}
-.m-item:last-child{border-bottom:none}
-.m-nm{font-size:0.95rem;font-weight:300;color:rgba(26,26,26,0.75);flex-shrink:0;transition:transform 0.3s,color 0.3s}
-.m-item:hover .m-nm{transform:translateX(5px);color:#1a1a1a}
-.m-dots{flex:1;border-bottom:1px dotted rgba(26,26,26,0.15)}
-.m-pr{font-family:'Playfair Display',serif;font-size:1.3rem;color:#878787;white-space:nowrap}
-.m-foot{padding:2rem;border-top:1px solid #e0dbd3}
-.m-foot p{font-size:0.8rem;color:#6a6a6a;margin-bottom:1rem}
-.m-cta{display:block;width:100%;padding:1rem;background:#878787;color:#fff;text-align:center;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:background 0.3s}
-.m-cta:hover{background:#1a1a1a}
+#mod-bg{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:800;opacity:0;pointer-events:none;transition:opacity 0.4s}
+#mod-bg.open{opacity:1;pointer-events:all}
+#mod-panel{position:fixed;top:0;right:0;bottom:0;width:100%;max-width:40rem;background:#f8f6f3;z-index:900;overflow-y:auto;transform:translateX(100%);transition:transform 0.45s ease}
+#mod-panel.open{transform:translateX(0)}
+.mhdr{position:sticky;top:0;background:rgba(248,246,243,0.97);border-bottom:1px solid #e0dbd3;padding:2rem 2rem 0;z-index:10}
+.mtop{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.25rem}
+.mtop h2{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:400}
+.mclose{background:none;border:none;cursor:pointer;padding:0.5rem;font-size:1.5rem;line-height:1;color:#1a1a1a;transition:transform 0.3s}
+.mclose:hover{transform:rotate(90deg)}
+.mtabs{display:flex;gap:0.25rem;padding-bottom:1rem;overflow-x:auto}
+.mtab{padding:0.45rem 1rem;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;background:rgba(26,26,26,0.05);border:none;cursor:pointer;white-space:nowrap;transition:all 0.3s;color:rgba(26,26,26,0.5)}
+.mtab.on{background:#878787;color:#fff}
+.mbody{padding:2rem}
+.mcat{display:none}
+.mcat.on{display:block}
+.mcat-title{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:0.4rem}
+.mcat-line{height:1px;background:#878787;margin-bottom:1.75rem}
+.mitem{display:flex;align-items:baseline;gap:0.75rem;padding:1.1rem 0;border-bottom:1px solid rgba(26,26,26,0.07)}
+.mitem:last-child{border-bottom:none}
+.mnm{font-size:0.95rem;font-weight:300;color:rgba(26,26,26,0.75);flex-shrink:0;transition:transform 0.3s,color 0.3s}
+.mitem:hover .mnm{transform:translateX(5px);color:#1a1a1a}
+.mdots{flex:1;border-bottom:1px dotted rgba(26,26,26,0.15)}
+.mpr{font-family:'Playfair Display',serif;font-size:1.3rem;color:#878787;white-space:nowrap}
+.mfoot{padding:2rem;border-top:1px solid #e0dbd3}
+.mfoot p{font-size:0.8rem;color:#6a6a6a;margin-bottom:1rem}
+.mcta{display:block;width:100%;padding:1rem;background:#878787;color:#fff;text-align:center;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;transition:background 0.3s}
+.mcta:hover{background:#1a1a1a}
 
 @media(max-width:860px){
   header{padding:0 1.5rem}
-  .h-nav{display:none}
-  .sec{padding:4rem 1.5rem}
-  footer{padding:4rem 1.5rem 3rem}
-  .story-grid,.pt-grid,.ft-grid{grid-template-columns:1fr;gap:2.5rem}
+  .hnav{display:none}
+  .sec,footer{padding:4rem 1.5rem}
+  .two-col{grid-template-columns:1fr;gap:2.5rem}
   .story-img{order:-1}
-  .g-item{width:70vw}
+  .ft-grid{grid-template-columns:1fr;gap:2.5rem}
+  .gi{width:70vw}
   .gal-sticky{padding:0 1.5rem}
-  #gal-section{height:300vh}
+  #gallery{height:300vh}
 }
 </style>
 </head>
@@ -187,30 +179,30 @@ footer{background:#1a1a1a;color:#f8f6f3;padding:7rem 3rem 4rem}
   <a href="#" class="logo">
     <img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2020/11/hair-room-.svg" alt="The Hair Room">
   </a>
-  <ul class="h-nav">
+  <ul class="hnav">
     <li><a href="#services">Services</a></li>
-    <li><a href="#gal-section">Gallery</a></li>
+    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="tel:+442476678080" class="book-btn">Book Now</a>
+  <a href="tel:+442476678080" class="bookbtn">Book Now</a>
 </header>
 
 <!-- HERO -->
 <section id="hero">
-  <img id="hero-bg" src="https://thehairroomcoventry.co.uk/wp-content/uploads/2020/10/tim-mossholder-ArQIWcmOlA8-unsplash-scaled.jpg" alt="The Hair Room">
+  <img class="hero-bg" id="hero-bg" src="https://thehairroomcoventry.co.uk/wp-content/uploads/2020/10/tim-mossholder-ArQIWcmOlA8-unsplash-scaled.jpg" alt="The Hair Room">
   <div class="hero-ov"></div>
-  <div class="hero-text" id="hero-text">
+  <div class="hero-ct">
     <h1>The Hair<br>Room.</h1>
     <p>12 Years in Earlsdon. Every Cut, Colour &amp; Style — A Personal Journey.</p>
   </div>
   <div class="scroll-hint">
     <span>Scroll</span>
-    <div class="scroll-line"></div>
+    <div class="sline"></div>
   </div>
 </section>
 
 <!-- MARQUEE -->
-<div class="mq">
+<div class="mq-wrap">
   <div class="mq-inner">
     <div style="display:flex">
       <span class="mq-item"><span class="mq-dot"></span>Bespoke Wearable</span>
@@ -231,17 +223,19 @@ footer{background:#1a1a1a;color:#f8f6f3;padding:7rem 3rem 4rem}
 
 <!-- SALON STORY -->
 <div class="sec" id="story">
-  <div class="inner">
-    <div class="story-grid">
-      <div class="story-img img-up">
-        <img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2026/03/ChatGPT-Image-Mar-20-2026-12_22_08-PM.png" alt="The Hair Room Salon">
+  <div class="wrap">
+    <div class="two-col">
+      <div class="story-img">
+        <img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2026/03/ChatGPT-Image-Mar-20-2026-12_22_08-PM.png"
+             onerror="this.src='https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/about-1-scaled.jpg'"
+             alt="The Hair Room Salon">
       </div>
       <div class="story-text">
-        <span class="s-label rv">Est. 2012 — Earlsdon, Coventry</span>
-        <h2 class="serif rv d1">The Salon Story</h2>
-        <div class="bar rv d1"></div>
-        <p class="lg rv d2">Founded in 2012, The Hair Room was built on a simple philosophy: hair should be personal, wearable, and healthy. For over a decade, we have been a sanctuary in Earlsdon.</p>
-        <p class="rv d3">Every client is a collaborator. Every consultation is a conversation. Every service is bespoke.</p>
+        <span class="lbl">Est. 2012 — Earlsdon, Coventry</span>
+        <h2 class="serif">The Salon Story</h2>
+        <div class="bar"></div>
+        <p class="lg">Founded in 2012, The Hair Room was built on a simple philosophy: hair should be personal, wearable, and healthy. For over a decade, we have been a sanctuary in Earlsdon.</p>
+        <p>Every client is a collaborator. Every consultation is a conversation. Every service is bespoke.</p>
       </div>
     </div>
   </div>
@@ -249,64 +243,62 @@ footer{background:#1a1a1a;color:#f8f6f3;padding:7rem 3rem 4rem}
 
 <!-- SERVICES -->
 <div class="sec" id="services">
-  <div class="inner">
-    <div class="svc-top">
+  <div class="wrap">
+    <div class="sv-top">
       <div>
-        <span class="s-label rv">Services</span>
-        <h2 class="serif rv d1">Signature Services</h2>
+        <span class="lbl">Services</span>
+        <h2 class="serif">Signature Services</h2>
       </div>
-      <button class="outline-btn rv d1" onclick="openModal()">Full Menu</button>
+      <button class="outline-btn" onclick="openModal()">Full Menu</button>
     </div>
-    <div class="svc-list">
-      <div class="svc-row rv"><div class="svc-l"><span class="svc-cat">Signature</span><span class="svc-name">Cut &amp; Blow Dry</span><span class="svc-desc">Precision cutting with luxury finish</span></div><span class="svc-price">£35+</span></div>
-      <div class="svc-row rv d1"><div class="svc-l"><span class="svc-cat">Signature</span><span class="svc-name">Balayage</span><span class="svc-desc">Hand-painted, sun-kissed colour</span></div><span class="svc-price">£100+</span></div>
-      <div class="svc-row rv d2"><div class="svc-l"><span class="svc-cat">Signature</span><span class="svc-name">Face Frame</span><span class="svc-desc">Brightening around the face</span></div><span class="svc-price">£80+</span></div>
-      <div class="svc-row rv d3"><div class="svc-l"><span class="svc-cat">Colour</span><span class="svc-name">Global Tint</span><span class="svc-desc">Full head permanent colour</span></div><span class="svc-price">£55</span></div>
-      <div class="svc-row rv d3"><div class="svc-l"><span class="svc-cat">Junior</span><span class="svc-name">Smooth Blowdry</span><span class="svc-desc">Professional styling</span></div><span class="svc-price">£15+</span></div>
-      <div class="svc-row rv d3"><div class="svc-l"><span class="svc-cat">Junior</span><span class="svc-name">Full Balayage</span><span class="svc-desc">Hand-painted highlights</span></div><span class="svc-price">£70+</span></div>
+    <div class="sv-list">
+      <div class="sv-row"><div class="sv-l"><span class="sv-cat">Signature</span><span class="sv-name">Cut &amp; Blow Dry</span><span class="sv-desc">Precision cutting with luxury finish</span></div><span class="sv-price">£35+</span></div>
+      <div class="sv-row"><div class="sv-l"><span class="sv-cat">Signature</span><span class="sv-name">Balayage</span><span class="sv-desc">Hand-painted, sun-kissed colour</span></div><span class="sv-price">£100+</span></div>
+      <div class="sv-row"><div class="sv-l"><span class="sv-cat">Signature</span><span class="sv-name">Face Frame</span><span class="sv-desc">Brightening around the face</span></div><span class="sv-price">£80+</span></div>
+      <div class="sv-row"><div class="sv-l"><span class="sv-cat">Colour</span><span class="sv-name">Global Tint</span><span class="sv-desc">Full head permanent colour</span></div><span class="sv-price">£55</span></div>
+      <div class="sv-row"><div class="sv-l"><span class="sv-cat">Junior</span><span class="sv-name">Smooth Blowdry</span><span class="sv-desc">Professional styling</span></div><span class="sv-price">£15+</span></div>
+      <div class="sv-row"><div class="sv-l"><span class="sv-cat">Junior</span><span class="sv-name">Full Balayage</span><span class="sv-desc">Hand-painted highlights</span></div><span class="sv-price">£70+</span></div>
     </div>
   </div>
 </div>
 
 <!-- PARTNERS -->
-<div class="sec pt-sec" id="partners">
-  <div class="inner">
-    <div class="pt-grid">
+<div class="sec" id="partners">
+  <div class="wrap">
+    <div class="two-col">
       <div class="pt-text">
-        <span class="s-label rv">Luxury Partners</span>
-        <h2 class="serif rv d1">Personalised<br>Rituals</h2>
-        <div class="bar rv d1"></div>
-        <p class="lg rv d2">We partner with Kérastase — the world's leading professional haircare brand — to deliver luxury treatments that elevate every service.</p>
-        <p class="rv d3">Each consultation includes a personalised Kérastase ritual, tailored to your hair's unique needs.</p>
-        <span class="pt-brand rv d3">Kérastase Paris</span>
+        <span class="lbl">Luxury Partners</span>
+        <h2 class="serif">Personalised<br>Rituals</h2>
+        <div class="bar"></div>
+        <p class="lg">We partner with Kérastase — the world's leading professional haircare brand — to deliver luxury treatments that elevate every service.</p>
+        <p>Each consultation includes a personalised Kérastase ritual, tailored to your hair's unique needs.</p>
+        <span class="pt-brand">Kérastase Paris</span>
       </div>
-      <div class="img-right">
-        <img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/the_hair-room-coventry_kerastase-_.png" alt="Kerastase" style="width:100%;display:block">
+      <div class="pt-img">
+        <img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/the_hair-room-coventry_kerastase-_.png" alt="Kerastase">
       </div>
     </div>
   </div>
 </div>
 
 <!-- GALLERY -->
-<div id="gal-section">
+<div id="gallery">
   <div class="gal-sticky">
     <div class="gal-head">
-      <div class="gal-row">
-        <div>
-          <span class="s-label">Gallery</span>
-          <h2 class="serif">Boutique Gallery</h2>
-        </div>
-        <p>Scroll to explore our sanctuary.</p>
+      <div>
+        <span class="lbl">Gallery</span>
+        <h2 class="serif">Boutique Gallery</h2>
       </div>
+      <p>Scroll to explore our sanctuary.</p>
     </div>
     <div style="overflow:visible;width:100%">
       <div class="gal-track" id="gal-track">
-        <div class="g-item"><img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/about-1-scaled.jpg" alt="Sanctuary"><div class="g-cap"><span>Sanctuary</span></div><div class="g-num">01</div></div>
-        <div class="g-item"><img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/the_hair-room-coventry_leftside-_.png" alt="Details"><div class="g-cap"><span>Details</span></div><div class="g-num">02</div></div>
-        <div class="g-item"><img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/the_hair-room-coventry_kerastase-_.png" alt="Rituals"><div class="g-cap"><span>Rituals</span></div><div class="g-num">03</div></div>
-        <div class="g-item"><img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2026/03/ChatGPT-Image-Mar-20-2026-12_22_08-PM.png" alt="Craft"><div class="g-cap"><span>Craft</span></div><div class="g-num">04</div></div>
-        <div class="g-item"><img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/the_hair-room-coventry_leftside-_.png" alt="Ambience"><div class="g-cap"><span>Ambience</span></div><div class="g-num">05</div></div>
-        <div class="g-item"><img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/about-1-scaled.jpg" alt="Style"><div class="g-cap"><span>Style</span></div><div class="g-num">06</div></div>
+        <div class="gi"><img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/about-1-scaled.jpg" alt="Sanctuary"><div class="gi-cap"><span>Sanctuary</span></div><div class="gi-num">01</div></div>
+        <div class="gi"><img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/the_hair-room-coventry_leftside-_.png" alt="Details"><div class="gi-cap"><span>Details</span></div><div class="gi-num">02</div></div>
+        <div class="gi"><img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/the_hair-room-coventry_kerastase-_.png" alt="Rituals"><div class="gi-cap"><span>Rituals</span></div><div class="gi-num">03</div></div>
+        <div class="gi"><img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2026/03/ChatGPT-Image-Mar-20-2026-12_22_08-PM.png" onerror="this.src='https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/about-1-scaled.jpg'" alt="Craft"><div class="gi-cap"><span>Craft</span></div><div class="gi-num">04</div></div>
+        <div class="gi"><img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/the_hair-room-coventry_leftside-_.png" alt="Ambience"><div class="gi-cap"><span>Ambience</span></div><div class="gi-num">05</div></div>
+        <div class="gi"><img src="https://thehairroomcoventry.co.uk/wp-content/uploads/2023/03/about-1-scaled.jpg" alt="Style"><div class="gi-cap"><span>Style</span></div><div class="gi-num">06</div></div>
       </div>
     </div>
     <div class="gal-prog">
@@ -320,23 +312,23 @@ footer{background:#1a1a1a;color:#f8f6f3;padding:7rem 3rem 4rem}
 <!-- FOOTER -->
 <footer id="contact">
   <div class="ft">
-    <p class="ft-h2 rv">Let's Create<br>Something Beautiful</p>
-    <div class="ft-ctas rv d1">
+    <p class="ft-h2">Let's Create<br>Something Beautiful</p>
+    <div class="ft-ctas">
       <a href="tel:+442476678080" class="ft-btn">Book a Consultation</a>
       <a href="https://www.instagram.com/thehairroomcoventry" target="_blank" class="ft-btn2">View on Instagram</a>
     </div>
     <div class="ft-grid">
-      <div class="ft-col rv">
+      <div class="ft-col">
         <div class="ft-lbl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>Location</div>
         <p>11 Broomfield Road</p>
         <p class="sub">CV5 6JW, Coventry</p>
       </div>
-      <div class="ft-col rv d1">
+      <div class="ft-col">
         <div class="ft-lbl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .82h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>Contact</div>
         <p>+44 (0)24 7667 8080</p>
         <p class="sub">hello@thehairroomcoventry.co.uk</p>
       </div>
-      <div class="ft-col rv d2">
+      <div class="ft-col">
         <div class="ft-lbl"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Hours</div>
         <div class="ft-hrs">
           <div class="ft-hr"><span>Tuesday – Friday</span><span>09:30 – 19:00</span></div>
@@ -346,7 +338,7 @@ footer{background:#1a1a1a;color:#f8f6f3;padding:7rem 3rem 4rem}
         </div>
       </div>
     </div>
-    <div class="ft-map rv">
+    <div class="ft-map">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2423.5!2d-1.531!3d52.407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876e8d05888dcf9%3A0x9d0dab3e3aa4e09e!2s11%20Broomfield%20Rd%2C%20Coventry%20CV5%206JW!5e0!3m2!1sen!2suk!4v1700000000000" allowfullscreen loading="lazy"></iframe>
     </div>
     <div class="ft-bot">
@@ -363,123 +355,111 @@ footer{background:#1a1a1a;color:#f8f6f3;padding:7rem 3rem 4rem}
 </footer>
 
 <!-- PRICE MODAL -->
-<div id="modal-bg" onclick="closeModal()"></div>
-<div id="modal">
-  <div class="m-hdr">
-    <div class="m-top">
+<div id="mod-bg" onclick="closeModal()"></div>
+<div id="mod-panel">
+  <div class="mhdr">
+    <div class="mtop">
       <div>
         <span style="font-size:0.6rem;letter-spacing:0.4em;text-transform:uppercase;color:#878787;display:block;margin-bottom:0.4rem">Price List</span>
         <h2>The Full Menu</h2>
       </div>
-      <button class="m-close" onclick="closeModal()">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="2" x2="18" y2="18"/><line x1="18" y1="2" x2="2" y2="18"/></svg>
-      </button>
+      <button class="mclose" onclick="closeModal()">&#x2715;</button>
     </div>
-    <div class="m-tabs">
-      <button class="m-tab on" onclick="tab(0)">Styling</button>
-      <button class="m-tab" onclick="tab(1)">Colour</button>
-      <button class="m-tab" onclick="tab(2)">Junior</button>
-      <button class="m-tab" onclick="tab(3)">Consultation</button>
+    <div class="mtabs">
+      <button class="mtab on" onclick="switchTab(0)">Styling</button>
+      <button class="mtab" onclick="switchTab(1)">Colour</button>
+      <button class="mtab" onclick="switchTab(2)">Junior</button>
+      <button class="mtab" onclick="switchTab(3)">Consultation</button>
     </div>
   </div>
-  <div class="m-body">
-    <div class="m-cat on"><p class="m-ct">Styling</p><div class="m-line"></div>
-      <div class="m-item"><span class="m-nm">Cut &amp; Blow Dry</span><div class="m-dots"></div><span class="m-pr">£35+</span></div>
-      <div class="m-item"><span class="m-nm">Wet Cut</span><div class="m-dots"></div><span class="m-pr">£27</span></div>
-      <div class="m-item"><span class="m-nm">Short Scissor/Clipper</span><div class="m-dots"></div><span class="m-pr">£28</span></div>
-      <div class="m-item"><span class="m-nm">Skin Fade</span><div class="m-dots"></div><span class="m-pr">£28</span></div>
-      <div class="m-item"><span class="m-nm">Restyle</span><div class="m-dots"></div><span class="m-pr">£45</span></div>
-      <div class="m-item"><span class="m-nm">Long Smooth Blowdry</span><div class="m-dots"></div><span class="m-pr">£30</span></div>
-      <div class="m-item"><span class="m-nm">Long Curly Blowdry</span><div class="m-dots"></div><span class="m-pr">£35</span></div>
+  <div class="mbody">
+    <div class="mcat on"><p class="mcat-title">Styling</p><div class="mcat-line"></div>
+      <div class="mitem"><span class="mnm">Cut &amp; Blow Dry</span><div class="mdots"></div><span class="mpr">£35+</span></div>
+      <div class="mitem"><span class="mnm">Wet Cut</span><div class="mdots"></div><span class="mpr">£27</span></div>
+      <div class="mitem"><span class="mnm">Short Scissor/Clipper</span><div class="mdots"></div><span class="mpr">£28</span></div>
+      <div class="mitem"><span class="mnm">Skin Fade</span><div class="mdots"></div><span class="mpr">£28</span></div>
+      <div class="mitem"><span class="mnm">Restyle</span><div class="mdots"></div><span class="mpr">£45</span></div>
+      <div class="mitem"><span class="mnm">Long Smooth Blowdry</span><div class="mdots"></div><span class="mpr">£30</span></div>
+      <div class="mitem"><span class="mnm">Long Curly Blowdry</span><div class="mdots"></div><span class="mpr">£35</span></div>
     </div>
-    <div class="m-cat"><p class="m-ct">Colour</p><div class="m-line"></div>
-      <div class="m-item"><span class="m-nm">Full Head Balayage</span><div class="m-dots"></div><span class="m-pr">£100+</span></div>
-      <div class="m-item"><span class="m-nm">Partial Balayage</span><div class="m-dots"></div><span class="m-pr">£90</span></div>
-      <div class="m-item"><span class="m-nm">Face Frame</span><div class="m-dots"></div><span class="m-pr">£80+</span></div>
-      <div class="m-item"><span class="m-nm">Scalp Bleach</span><div class="m-dots"></div><span class="m-pr">£90</span></div>
-      <div class="m-item"><span class="m-nm">Global Tint</span><div class="m-dots"></div><span class="m-pr">£55</span></div>
-      <div class="m-item"><span class="m-nm">Root Retouch</span><div class="m-dots"></div><span class="m-pr">£35–£45</span></div>
-      <div class="m-item"><span class="m-nm">Toner</span><div class="m-dots"></div><span class="m-pr">£20</span></div>
+    <div class="mcat"><p class="mcat-title">Colour</p><div class="mcat-line"></div>
+      <div class="mitem"><span class="mnm">Full Head Balayage</span><div class="mdots"></div><span class="mpr">£100+</span></div>
+      <div class="mitem"><span class="mnm">Partial Balayage</span><div class="mdots"></div><span class="mpr">£90</span></div>
+      <div class="mitem"><span class="mnm">Face Frame</span><div class="mdots"></div><span class="mpr">£80+</span></div>
+      <div class="mitem"><span class="mnm">Scalp Bleach</span><div class="mdots"></div><span class="mpr">£90</span></div>
+      <div class="mitem"><span class="mnm">Global Tint</span><div class="mdots"></div><span class="mpr">£55</span></div>
+      <div class="mitem"><span class="mnm">Root Retouch</span><div class="mdots"></div><span class="mpr">£35–£45</span></div>
+      <div class="mitem"><span class="mnm">Toner</span><div class="mdots"></div><span class="mpr">£20</span></div>
     </div>
-    <div class="m-cat"><p class="m-ct">Junior</p><div class="m-line"></div>
-      <div class="m-item"><span class="m-nm">Smooth Blowdry</span><div class="m-dots"></div><span class="m-pr">£15+</span></div>
-      <div class="m-item"><span class="m-nm">Short/Medium Cuts</span><div class="m-dots"></div><span class="m-pr">£15–£28</span></div>
-      <div class="m-item"><span class="m-nm">Full Balayage</span><div class="m-dots"></div><span class="m-pr">£70+</span></div>
-      <div class="m-item"><span class="m-nm">Junior Scalp Bleach</span><div class="m-dots"></div><span class="m-pr">£40</span></div>
-      <div class="m-item"><span class="m-nm">Junior Global Tint</span><div class="m-dots"></div><span class="m-pr">£35</span></div>
-      <div class="m-item"><span class="m-nm">Junior Root Tint</span><div class="m-dots"></div><span class="m-pr">£30</span></div>
-      <div class="m-item"><span class="m-nm">Junior Toner</span><div class="m-dots"></div><span class="m-pr">£10</span></div>
+    <div class="mcat"><p class="mcat-title">Junior</p><div class="mcat-line"></div>
+      <div class="mitem"><span class="mnm">Smooth Blowdry</span><div class="mdots"></div><span class="mpr">£15+</span></div>
+      <div class="mitem"><span class="mnm">Short/Medium Cuts</span><div class="mdots"></div><span class="mpr">£15–£28</span></div>
+      <div class="mitem"><span class="mnm">Full Balayage</span><div class="mdots"></div><span class="mpr">£70+</span></div>
+      <div class="mitem"><span class="mnm">Junior Scalp Bleach</span><div class="mdots"></div><span class="mpr">£40</span></div>
+      <div class="mitem"><span class="mnm">Junior Global Tint</span><div class="mdots"></div><span class="mpr">£35</span></div>
+      <div class="mitem"><span class="mnm">Junior Root Tint</span><div class="mdots"></div><span class="mpr">£30</span></div>
+      <div class="mitem"><span class="mnm">Junior Toner</span><div class="mdots"></div><span class="mpr">£10</span></div>
     </div>
-    <div class="m-cat"><p class="m-ct">Consultation</p><div class="m-line"></div>
-      <div class="m-item"><span class="m-nm">Bridal Styling</span><div class="m-dots"></div><span class="m-pr">POA</span></div>
-      <div class="m-item"><span class="m-nm">Hair Up &amp; Styling</span><div class="m-dots"></div><span class="m-pr">POA</span></div>
-      <div class="m-item"><span class="m-nm">Extensions</span><div class="m-dots"></div><span class="m-pr">POA</span></div>
-      <div class="m-item"><span class="m-nm">Fabric Treatment</span><div class="m-dots"></div><span class="m-pr">POA</span></div>
-      <div class="m-item"><span class="m-nm">Colour Correction</span><div class="m-dots"></div><span class="m-pr">POA</span></div>
+    <div class="mcat"><p class="mcat-title">Consultation</p><div class="mcat-line"></div>
+      <div class="mitem"><span class="mnm">Bridal Styling</span><div class="mdots"></div><span class="mpr">POA</span></div>
+      <div class="mitem"><span class="mnm">Hair Up &amp; Styling</span><div class="mdots"></div><span class="mpr">POA</span></div>
+      <div class="mitem"><span class="mnm">Extensions</span><div class="mdots"></div><span class="mpr">POA</span></div>
+      <div class="mitem"><span class="mnm">Fabric Treatment</span><div class="mdots"></div><span class="mpr">POA</span></div>
+      <div class="mitem"><span class="mnm">Colour Correction</span><div class="mdots"></div><span class="mpr">POA</span></div>
     </div>
   </div>
-  <div class="m-foot">
+  <div class="mfoot">
     <p>All prices are a guide. A consultation ensures the perfect service for you.</p>
-    <a href="tel:+442476678080" class="m-cta">Book a Consultation</a>
+    <a href="tel:+442476678080" class="mcta">Book a Consultation</a>
   </div>
 </div>
 
 <script>
-// HEADER scroll behaviour
-var hdr = document.getElementById('hdr'), lastY = 0;
-window.addEventListener('scroll', function() {
-  var sy = window.scrollY;
-  hdr.classList.toggle('scrolled', sy > 50);
-  hdr.classList.toggle('hide', sy > lastY && sy > 120);
-  lastY = sy;
-}, { passive: true });
+// HEADER
+var hdr=document.getElementById('hdr'), lastY=0;
+window.addEventListener('scroll',function(){
+  var sy=window.scrollY;
+  hdr.classList.toggle('scrolled',sy>50);
+  hdr.classList.toggle('hide',sy>lastY&&sy>120);
+  lastY=sy;
+},{passive:true});
 
-// HERO parallax
-var hbg = document.getElementById('hero-bg'), htxt = document.getElementById('hero-text');
-window.addEventListener('scroll', function() {
-  var sy = window.scrollY;
-  hbg.style.transform = 'translateY(' + (sy * 0.3) + 'px)';
-  htxt.style.opacity = Math.max(1 - sy / 500, 0);
-}, { passive: true });
+// HERO PARALLAX
+var hbg=document.getElementById('hero-bg');
+window.addEventListener('scroll',function(){
+  hbg.style.transform='translateY('+window.scrollY*0.3+'px)';
+},{passive:true});
 
-// SCROLL REVEAL
-var obs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.rv, .rv.d1, .rv.d2, .rv.d3, .img-up, .img-right, .bar').forEach(function(el) { obs.observe(el); });
-
-// SCROLL GALLERY
-var galSec = document.getElementById('gal-section');
-var galTrack = document.getElementById('gal-track');
-var gpFill = document.getElementById('gp-fill');
-var gpCur = document.getElementById('gp-cur');
-window.addEventListener('scroll', function() {
-  var rect = galSec.getBoundingClientRect();
-  var progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (galSec.offsetHeight - window.innerHeight)));
-  var maxShift = Math.max(0, galTrack.scrollWidth - galTrack.parentElement.offsetWidth + 60);
-  galTrack.style.transform = 'translateX(-' + (progress * maxShift) + 'px)';
-  gpFill.style.width = (progress * 100) + '%';
-  gpCur.textContent = String(Math.min(Math.ceil(progress * 6) || 1, 6)).padStart(2, '0');
-}, { passive: true });
+// GALLERY SCROLL
+var galSec=document.getElementById('gallery');
+var galTrack=document.getElementById('gal-track');
+var gpFill=document.getElementById('gp-fill');
+var gpCur=document.getElementById('gp-cur');
+window.addEventListener('scroll',function(){
+  var rect=galSec.getBoundingClientRect();
+  var progress=Math.max(0,Math.min(1,(window.innerHeight-rect.top)/(galSec.offsetHeight-window.innerHeight)));
+  var maxShift=Math.max(0,galTrack.scrollWidth-galTrack.parentElement.offsetWidth+60);
+  galTrack.style.transform='translateX(-'+(progress*maxShift)+'px)';
+  gpFill.style.width=(progress*100)+'%';
+  gpCur.textContent=String(Math.min(Math.ceil(progress*6)||1,6)).padStart(2,'0');
+},{passive:true});
 
 // MODAL
-function openModal() {
-  document.getElementById('modal-bg').classList.add('open');
-  document.getElementById('modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
+function openModal(){
+  document.getElementById('mod-bg').classList.add('open');
+  document.getElementById('mod-panel').classList.add('open');
+  document.body.style.overflow='hidden';
 }
-function closeModal() {
-  document.getElementById('modal-bg').classList.remove('open');
-  document.getElementById('modal').classList.remove('open');
-  document.body.style.overflow = '';
+function closeModal(){
+  document.getElementById('mod-bg').classList.remove('open');
+  document.getElementById('mod-panel').classList.remove('open');
+  document.body.style.overflow='';
 }
-function tab(i) {
-  document.querySelectorAll('.m-tab').forEach(function(t, j) { t.classList.toggle('on', i === j); });
-  document.querySelectorAll('.m-cat').forEach(function(c, j) { c.classList.toggle('on', i === j); });
+function switchTab(i){
+  document.querySelectorAll('.mtab').forEach(function(t,j){t.classList.toggle('on',i===j);});
+  document.querySelectorAll('.mcat').forEach(function(c,j){c.classList.toggle('on',i===j);});
 }
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 </script>
 </body>
 </html>
